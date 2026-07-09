@@ -17,7 +17,7 @@ end
 -- CONFIGURATION
 -- ============================================================================
 
-local TMDB_API_KEY = ""  -- User must configure this
+local TMDB_API_KEY = "6b15c3bea7b76b7148a835dd50d99175"  -- Pre-configured TMDB API key
 local TMDB_BASE_URL = "https://api.themoviedb.org/3"
 
 -- Streaming providers (tried in order)
@@ -249,7 +249,7 @@ local function load_config()
         return config
     end
     return {
-        tmdb_api_key = "",
+        tmdb_api_key = TMDB_API_KEY,  -- Use pre-configured key
         user_region = "",
         enable_streaming = true,
         preferred_provider = "VidSrc"
@@ -542,16 +542,14 @@ local function settings_dialog()
     
     current_config = load_config()
     
-    main_dlg:add_label("TMDB API Key:", 1, 2, 8, 1)
-    local api_key_input = main_dlg:add_text_input(current_config.tmdb_api_key or "", 1, 3, 8, 1)
-    
-    main_dlg:add_label("Get free at: https://www.themoviedb.org/settings/api", 1, 4, 8, 1)
+    main_dlg:add_label("TMDB API Key: Pre-configured", 1, 2, 8, 1)
+    main_dlg:add_label("You can now search and stream movies!", 1, 3, 8, 1)
+    main_dlg:add_label("(API key is already set up)", 1, 4, 8, 1)
     
     main_dlg:add_label("Your Region (for geo-blocking):", 1, 5, 8, 1)
     local region_input = main_dlg:add_text_input(current_config.user_region or "", 1, 6, 8, 1)
     
     main_dlg:add_button("Save Settings", function()
-        current_config.tmdb_api_key = api_key_input:get_text()
         current_config.user_region = region_input:get_text()
         save_config(current_config)
         vlc.msg.info("VLC Infinity: Settings saved!")
