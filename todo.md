@@ -38,6 +38,6 @@
 - [x] Write installation guide for VLC extension (all platforms)
 - [x] Create user documentation with screenshots (included in README)
 - [x] Create developer documentation for extending the system (included in README)
-- [ ] Push all code to user's GitHub repo (Jamesjaq/vlc)
-- [ ] Create checkpoint and prepare for delivery
+- [x] Push all code to user's GitHub repo (Jamesjaq/vlc)
+- [x] Create checkpoint and prepare for delivery
 
